@@ -19,7 +19,7 @@ export class FilmeDetalhesPage {
   public filmeid;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public movieProvider: MoovieProvider
   ) {
@@ -27,11 +27,11 @@ export class FilmeDetalhesPage {
 
   ionViewDidEnter() {
     this.filmeid = this.navParams.get("id");
-    this.movieProvider.getMovieDetails(this.filmeid).subscribe(data=>{
+    this.movieProvider.getMovieDetails(this.filmeid).subscribe(data => {
       let retorno = (data as any)._body;
       this.filme = JSON.parse(retorno);
       console.log(this.filme);
-    }, error =>{
+    }, error => {
       console.log(error);
     })
   }

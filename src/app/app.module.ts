@@ -11,16 +11,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from "@angular/http"
-import { FeedPageModule } from "../pages/feed/feed.module";
 import { IntroPageModule } from "../pages/intro/intro.module";
 import { MoovieProvider } from '../providers/moovie/moovie';
-import { FeedPage } from "../pages/feed/feed";
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { SobrePageModule } from '../pages/sobre/sobre.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { FilmeDetalhesPageModule } from '../pages/filme-detalhes/filme-detalhes.module';
 import { CartolaProvider } from '../providers/cartola/cartola';
 import { AtletasPageModule } from '../pages/atletas/atletas.module';
+//import { FilmeDetalhesPage } from '../pages/filme-detalhes/filme-detalhes';
 
 @NgModule({
   declarations: [
@@ -29,13 +28,11 @@ import { AtletasPageModule } from '../pages/atletas/atletas.module';
     ContactPage,
     HomePage,
     TabsPage,
-    FeedPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     // Importando o módulo de feed
-    //FeedPageModule,
     IntroPageModule,
     HttpModule,
     ConfiguracoesPageModule,
@@ -51,7 +48,6 @@ import { AtletasPageModule } from '../pages/atletas/atletas.module';
     ContactPage,
     HomePage,
     TabsPage,
-    FeedPage
   ],
   providers: [
     StatusBar,

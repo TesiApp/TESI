@@ -1,17 +1,18 @@
-<ion-header color="primary">
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+<ion-header>
+  <ion-toolbar color="dark">
+
+    <ion-title>Em cartaz</ion-title>
+
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Seja bem vindol ao meu app!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="card-background-page">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let filme of lista_filmes" (click)="abrirDetalhes(filme)">
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path" />
+    <div class="card-title">{{ filme.title }}</div>
+    <div class="card-subtitle">{{ filme.release_date }}</div>
+  </ion-card>
 </ion-content>

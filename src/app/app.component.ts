@@ -15,11 +15,11 @@ import { ConfigProvider } from "../providers/config/config";
   ]
 })
 export class MyApp {
-  rootPage:any;
+  rootPage: any;
 
   constructor(
-    platform: Platform, 
-    statusBar: StatusBar, 
+    platform: Platform,
+    statusBar: StatusBar,
     splashScreen: SplashScreen,
     configProvider: ConfigProvider
   ) {
@@ -27,14 +27,14 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
 
-      let config = configProvider.getConfigData();
-      if(config == null){
-          this.rootPage = IntroPage;
-          configProvider.setConfigData(false);
-      }else{
-          this.rootPage = TabsPage;
+      let config = JSON.parse(configProvider.getConfigData());
+      if (config.showSlide == true) {
+        this.rootPage = IntroPage;
+        configProvider.setConfigData(false);
+      } else {
+        this.rootPage = TabsPage;
       }
-      
+
       console.log(config);
 
       statusBar.styleDefault();
