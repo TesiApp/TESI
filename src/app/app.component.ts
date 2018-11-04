@@ -28,12 +28,19 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       let config = JSON.parse(configProvider.getConfigData());
-      if (config.showSlide == true) {
-        this.rootPage = IntroPage;
+      console.log(config);
+      if (config == null) {
         configProvider.setConfigData(false);
+        this.rootPage = IntroPage;
       } else {
-        this.rootPage = TabsPage;
+        if (config.showSlide == false) {
+          this.rootPage = IntroPage;
+          configProvider.setConfigData(false);
+        } else {
+          this.rootPage = IntroPage;
+        }
       }
+
 
       console.log(config);
 

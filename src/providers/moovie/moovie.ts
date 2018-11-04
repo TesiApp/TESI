@@ -17,11 +17,29 @@ export class MoovieProvider {
   }
 
   getLatestMovies(page = 1) {
-    return this.http.get(this.baseApiPath + `/movie/popular?page=${page}&api_key=` + this.getApiKey() + '&language=pt-BR');
+    return this.http.get(this.baseApiPath + '/movie/popular?page=${page}&api_key=' + this.getApiKey() + '&language=pt-BR');
   }
 
   getMovieDetails(filmeid) {
-    return this.http.get(this.baseApiPath + `/movie/${filmeid}?api_key=` + this.getApiKey() + '&language=pt-BR');
+    return this.http.get(this.baseApiPath + '/movie/' + filmeid + '?api_key=' + this.getApiKey() + '&language=pt-BR');
+  }
+
+
+
+
+
+  getDetailsSession(session_id) {
+    return this.http.get(this.baseApiPath + '/account?session_id=' + session_id + '&api_key=' + this.getApiKey() + '&language=pt-BR');
+  }
+
+  addFavorite(session_id, filme_id) {
+    return this.http.post(this.baseApiPath + '/account/null/favorite?session_id=' + session_id + '&api_key=' + this.getApiKey(),
+      {
+        "media_type": "movie",
+        "media_id": filme_id,
+        "favorite": true
+      }
+    );
   }
 
   getApiKey(): string {

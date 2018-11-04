@@ -11,41 +11,41 @@
 
   <ion-slides pager>
 
-    <ion-slide class="slide_image">
-      <img src="assets/images/slide1.png" alt="">
-      <h2>Meu app Fantastico</h2>
-      <br>
-      <div>
-        <p>
-          Este meu app tera funcoes incriveis. Ele foi feito pra impressionar você.
-        </p>
-        <p>
-          Ficou curioso? <strong>Veja mais</strong>
-        </p>
-      </div>
+    <ion-slide>
+      <ion-item>
+        <ion-title>Login</ion-title>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Usuário</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
 
-      <a (click)="goToTabsPage()">Continuar</a>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <button ion-button block color="dark" (click)="Login()">Entrar</button>
+      <button ion-button block outline color="dark" (click)="goToSlideNext()">Cadastrar</button>
     </ion-slide>
 
-    <ion-slide class="slide_image">
-      <img src="assets/images/slide2.png" alt="">
-      <h2>Slide 2</h2>
-
-      <a (click)="goToTabsPage()">Continuar</a>
-    </ion-slide>
-
-    <ion-slide class="slide_image">
-      <img src="assets/images/slide3.png" alt="">
-      <h2>Slide 3</h2>
-
-      <a (click)="goToTabsPage()">Continuar</a>
-    </ion-slide>
-
-    <ion-slide class="slide_image">
-      <img src="assets/images/slide3.png" alt="">
-      <h2>Slide 4</h2>
-
-      <a (click)="goToTabsPage()">Continuar</a>
+    <ion-slide>
+      <ion-item>
+        <ion-title>Cadastro</ion-title>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nome de usuário</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <button ion-button block color="dark">Registrar</button>
+      <button ion-button block outline color="dark" (click)="goToSlidePrev()">Fazer Login</button>
     </ion-slide>
 
   </ion-slides>
