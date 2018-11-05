@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MoovieProvider } from "../../providers/moovie/moovie";
-import { IonicPage, NavParams, LoadingController } from 'ionic-angular';
+import { NavParams, LoadingController } from 'ionic-angular';
 import { FilmeDetalhesPage } from '../filme-detalhes/filme-detalhes';
+
+import { Storage } from "@ionic/storage";
+
+//importação do arquivo criado a cima
+import { SessionProvider } from '../../providers/session/session';
+
+//importação do arquivo usuario criado a cima
+//import { Usuario } from '../../app/models/usuario';
+
+
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [
-    MoovieProvider
+    MoovieProvider,
+    SessionProvider
   ]
 })
 export class HomePage {
@@ -26,7 +38,9 @@ export class HomePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private movieProvider: MoovieProvider,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public session: SessionProvider,
+    public storage: Storage
   ) {
   }
 
@@ -40,6 +54,7 @@ export class HomePage {
   fechaCarregando() {
     this.loader.dismiss();
   }
+
   doRefresh(refresher) {
     this.refresher = refresher;
     this.isRefreshing = true;
@@ -90,7 +105,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    this.carregarFilmes(true);
+    this.carregarFilmes(false);
   }
 
 }

@@ -7,11 +7,11 @@ let config_key_name = "config";
 export class ConfigProvider {
 
   private baseApiPath = "https://api.themoviedb.org/3";
-  private config = {
-    showSlide: false,
-    name: "",
-    username: ""
-  }
+  // private config = {
+  //   showSlide: false,
+  //   name: "",
+  //   username: ""
+  // }
 
   constructor(public http: Http) {
 
@@ -82,6 +82,32 @@ export class ConfigProvider {
         "request_token": token
       }
     );
+  }
+
+  setFavoriteData(id_filme) {
+    var filmes = this.getFavoriteData();
+    var add = true;
+    if (filmes != null) {
+      let favorites = filmes;
+      if (favorites.indexOf(id_filme) < 0) {
+        favorites.push(id_filme);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      } else {
+        favorites.splice(favorites.indexOf(id_filme), 1);
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        add = false;
+      }
+    } else {
+      let favorites = [];
+      favorites.push(id_filme);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    return add;
+  }
+
+  getFavoriteData() {
+    return JSON.parse(localStorage.getItem('favorites'));
   }
 
   getApiKey(): string {

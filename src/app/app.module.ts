@@ -17,9 +17,11 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
 import { SobrePageModule } from '../pages/sobre/sobre.module';
 import { PerfilPageModule } from '../pages/perfil/perfil.module';
 import { FilmeDetalhesPageModule } from '../pages/filme-detalhes/filme-detalhes.module';
-import { CartolaProvider } from '../providers/cartola/cartola';
-import { AtletasPageModule } from '../pages/atletas/atletas.module';
+import { SessionProvider } from '../providers/session/session';
+import { FavoritosPageModule } from '../pages/favoritos/favoritos.module';
 //import { FilmeDetalhesPage } from '../pages/filme-detalhes/filme-detalhes';
+
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { AtletasPageModule } from '../pages/atletas/atletas.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     // Importando o módulo de feed
     IntroPageModule,
     HttpModule,
@@ -39,7 +42,7 @@ import { AtletasPageModule } from '../pages/atletas/atletas.module';
     SobrePageModule,
     PerfilPageModule,
     FilmeDetalhesPageModule,
-    AtletasPageModule
+    FavoritosPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,8 +56,8 @@ import { AtletasPageModule } from '../pages/atletas/atletas.module';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    CartolaProvider,
-    MoovieProvider
+    MoovieProvider,
+    SessionProvider
   ]
 })
 export class AppModule { }

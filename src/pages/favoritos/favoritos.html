@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="dark">
+
+    <ion-title>Favoritos</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="card-background-page">
+  <ion-list>
+    <ion-item *ngFor="let filme of lista_filmes" (click)="abrirDetalhes(filme)">
+      <ion-thumbnail item-start>
+        <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path">
+      </ion-thumbnail>
+      <h2>{{ filme.title }}</h2>
+      <p>{{ filme.tagline }}</p>
+      <button ion-button clear item-end>Abrir</button>
+    </ion-item>
+  </ion-list>
+  <button ion-button block color="dark" (click)="atualizar()">Atualizar</button>
+</ion-content>
