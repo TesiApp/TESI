@@ -37,14 +37,16 @@ export class FavoritosPage {
     this.lista_filmes = [];
     var filmes = this.configProvider.getFavoriteData();
 
-    filmes.forEach(element => {
-      this.movieProvider.getMovieDetails(element).subscribe(data => {
-        let retorno = (data as any)._body;
-        this.lista_filmes.push(JSON.parse(retorno));
-      }, error => {
-        console.log(error);
-      })
-    });
+    if (filmes != null) {
+      filmes.forEach(element => {
+        this.movieProvider.getMovieDetails(element).subscribe(data => {
+          let retorno = (data as any)._body;
+          this.lista_filmes.push(JSON.parse(retorno));
+        }, error => {
+          console.log(error);
+        })
+      });
+    }
   }
 
   atualizar() {

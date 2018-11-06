@@ -10,6 +10,9 @@
 
 <ion-content class="card-background-page">
   <ion-list>
+    <ion-item *ngIf="lista_filmes.length == 0">
+      Nenhum filme adicionado aos favoritos
+    </ion-item>
     <ion-item *ngFor="let filme of lista_filmes" (click)="abrirDetalhes(filme)">
       <ion-thumbnail item-start>
         <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path">

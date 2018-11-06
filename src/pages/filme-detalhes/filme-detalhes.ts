@@ -59,8 +59,12 @@ export class FilmeDetalhesPage {
     })
 
     var favoritos = this.configProvider.getFavoriteData();
-    if (favoritos.indexOf(this.filmeid) >= 0) {
-      this.addorremove = "Remover dos Favoritos";
+    if (favoritos != null) {
+      if (favoritos.indexOf(this.filmeid) >= 0) {
+        this.addorremove = "Remover dos Favoritos";
+      } else {
+        this.addorremove = "Adicionar aos Favoritos";
+      }
     } else {
       this.addorremove = "Adicionar aos Favoritos";
     }
